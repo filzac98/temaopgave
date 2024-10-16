@@ -46,6 +46,45 @@ p {
   margin: 0 0 1rem;
 }
 
+/* Header styling */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-bg);
+  padding: 20px 40px;
+  color: var(--accent-color); /* Light gold color */
+}
+
+.logo .home-link {
+  text-decoration: none; /* Remove underline from link */
+  color: inherit; /* Keep the color the same as the parent */
+}
+
+.main-header .logo h1 {
+  font-family: "Lexend Mega", sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.main-nav ul li a {
+  font-family: "Lexend Mega", sans-serif;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.main-nav ul li a:hover {
+  color: #c38156; /* Add hover effect */
+}
+
 /* Newsletter Footer Styles */
 .newsletter-footer {
   background-color: var(--primary-bg);

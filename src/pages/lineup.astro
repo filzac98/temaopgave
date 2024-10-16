@@ -1,0 +1,18 @@
+---
+import MainLayout from "../layouts/MainLayout.astro"
+import Artists from "../components/Artists.astro";
+const data = await fetch("https://fetch-with-astro.netlify.app/api/artists",{
+  method:"GET",
+  
+}).then(res=>res.json());
+---
+
+<MainLayout title="Lineup">
+	<section class="artists">
+		{
+		  data.map((artist) => {
+			return <Artists data={artist} />;
+		  })
+		}
+	  </section>
+</MainLayout>
