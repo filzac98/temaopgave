@@ -4,9 +4,9 @@ const {data} = Astro.props
 ---
 
 <a href={`artists/${data.slug}`}>
-    <article>
-        <h2>{data.title}</h2>
-        <p>{data.type}</p>
-        <p>{data.content}</p>
+    <article class="artist-card">
+        <h2 class="artist-title">{data.title}</h2>
+        <p class="artist-type">{data.type}</p>
+        <p class="artist-content">{data.content}</p>
     </article>
 </a>

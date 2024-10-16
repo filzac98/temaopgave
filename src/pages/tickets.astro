@@ -8,13 +8,6 @@ const data = await fetch("https://fetch-with-astro.netlify.app/api/artists", {
 }).then(res => res.json());
 ---
 
-<MainLayout title="Lineup" currentPage="/lineup">
+<MainLayout title="Tickets" currentPage="/tickets">
   <Hero imageSrc="/images/hero2.jpg" showContent={false} />
-  <section class="artists">
-    {
-      data.map((artist) => {
-        return <Artists data={artist} />;
-      })
-    }
-  </section>
 </MainLayout>

@@ -1,0 +1,27 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+    const data = await fetch('https://fetch-with-astro.netlify.app/api/artists', 
+    {
+        method: "GET",
+
+    }).then(response => response.json());
+
+    return data.map((artist) => {
+        return {
+            params: { slug: artist.slug },
+            props: { myData:artist },
+        };
+    });
+}
+const {myData} = Astro.props
+console.log(myData);
+---
+
+
+
+<MainLayout title={myData.title}>
+    <h2>{myData.type}</h2>
+    <p>{myData.content}</p>
+</MainLayout>
