@@ -286,6 +286,14 @@ p {
   color: var(--primary-color);
   font-size: 16px;
 }
+.newsletter-form input[type="text"]:focus,
+.newsletter-form input[type="email"]:focus {
+  outline: none; /* Remove the default focus outline */
+  border-color: var(
+    --hover-color
+  ); /* Optional: Change the border color on focus */
+  box-shadow: 0 0 5px var(--hover-color); /* Optional: Add a subtle glow effect */
+}
 
 .newsletter-form .checkbox-container {
   display: flex;
