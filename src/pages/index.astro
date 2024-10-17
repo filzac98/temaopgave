@@ -4,5 +4,43 @@ import Hero from "../components/Hero.astro"
 ---
 
 <MainLayout title="Hjem" >
-	<Hero imageSrc="/images/hero1.jpg" title="28. August - 30. August 2025" text="3 days of house, disco and techno in the woods." text2="Karrusel takes place at a secluded green spot on Refshaleøen in central Copenhagen. 30+ artists across 3 stages."/>
+	<Hero 
+    imageSrc="/images/hero1.jpg" 
+    title="28. August - 30. August 2025" 
+    text="3 days of house, disco and techno in the woods." 
+    text2="Karrusel takes place at a secluded green spot on Refshaleøen in central Copenhagen. 30+ artists across 3 stages."
+  	/>
+	  <section class="categories-section">
+        <h2>Explore Our Categories</h2>
+        <div class="line"></div> <!-- Line between header and categories -->
+
+        <div class="categories-grid">
+            <div class="category">
+                <h3>KARRUSEL 2025</h3>
+                <a href="/lineup"><img src="/images/karrusel25.jpg" alt="Karrusel 2025" /></a>
+            </div>
+            <div class="category">
+                <h3>LATEST NEWS</h3>
+                <a href="/news"><img src="/images/latestnews.jpg" alt="Latest News" /></a>
+            </div>
+            <div class="category">
+                <h3>GALLERY</h3>
+                <a href="/"><img src="/images/Gallery.jpg" alt="Gallery" /></a>
+            </div>
+            <div class="category">
+                <h3>FAQ</h3>
+                <a href="/tickets"><img src="/images/FAQ.jpg" alt="FAQ" /></a>
+            </div>
+            <div class="category">
+                <h3>VOLUNTEER</h3>
+                <a href="/"><img src="/images/Volunteer.jpg" alt="Volunteer" /></a>
+            </div>
+            <div class="category">
+                <h3>ABOUT</h3>
+                <a href="/lineup"><img src="/images/about.jpg" alt="About" /></a>
+            </div>
+        </div>
+
+        <div class="line"></div> <!-- Line after categories -->
+    </section>
 </MainLayout>

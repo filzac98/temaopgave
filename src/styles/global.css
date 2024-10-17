@@ -154,6 +154,55 @@ p {
   background-color: #c38156;
 }
 
+.categories-section {
+  padding: 40px 20px; /* Adjust as needed */
+  text-align: center; /* Center the content */
+}
+
+.categories-section h2 {
+  font-family: var(--font-family2);
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #ecd9b9; /* Text color */
+}
+
+.line {
+  border-top: 1px solid rgba(236, 217, 185, 0.43); /* Adjust the color as needed */
+  margin: 20px auto; /* Center the line */
+  width: 80%; /* Adjust the width as needed */
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* Space between the categories */
+  max-width: 1200px; /* Center the grid within a max width */
+  margin: 0 auto; /* Center the grid */
+}
+
+.category {
+  text-align: center; /* Center the text within each category */
+  overflow: hidden; /* Ensure that image doesn't overflow the box */
+  transition: transform 0.3s ease; /* Add transition for hover effect */
+}
+.category:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+.category h3 {
+  font-family: var(--font-family);
+  margin-bottom: 10px;
+  color: #ecd9b9; /* Text color */
+}
+
+/* Set a specific height for the images to ensure uniformity */
+.category img {
+  width: 100%; /* Make images responsive */
+  height: 200px; /* Set a fixed height */
+  object-fit: cover; /* Ensure images cover the box without distortion */
+  border-radius: 8px 8px 0 0; /* Round the top corners */
+}
+
 /* Artist Card Styles */
 .artist-link {
   text-decoration: none;
@@ -207,6 +256,9 @@ p {
   font-size: 18px;
   margin-bottom: 30px;
   font-family: var(--font-family2);
+  margin: 0 auto;
+  max-width: 1200px;
+  margin-bottom: 2%;
 }
 
 .newsletter-form {
@@ -240,7 +292,50 @@ p {
 }
 
 .newsletter-form input[type="checkbox"] {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-color); /* Orange border */
+  background-color: transparent;
+  border-radius: 4px; /* Slightly rounded corners */
+  position: relative;
   margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for changes */
+}
+
+.newsletter-form input[type="checkbox"]:hover {
+  border-color: var(--hover-color); /* Darker orange border on hover */
+}
+
+.newsletter-form input[type="checkbox"]:checked {
+  background-color: var(--button-bg); /* Light orange when checked */
+  border-color: var(--hover-color); /* Darker orange when checked */
+  animation: pop 0.3s ease-out; /* Animate when checked */
+}
+
+/* Add a checkmark when checked */
+.newsletter-form input[type="checkbox"]:checked::before {
+  content: "✔"; /* Unicode checkmark */
+  color: var(--button-text); /* Darker orange color for the checkmark */
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the checkmark */
+}
+
+/* A subtle animation */
+@keyframes pop {
+  0% {
+    transform: scale(0.8); /* Start a bit smaller */
+  }
+  50% {
+    transform: scale(1.1); /* Pop bigger */
+  }
+  100% {
+    transform: scale(1); /* Return to normal size */
+  }
 }
 
 .signup-button {
