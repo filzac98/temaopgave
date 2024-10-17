@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro"
 import Hero from "../components/Hero.astro"
+import Card from "../components/Card.astro";
 ---
 
 <MainLayout title="Hjem" >
@@ -15,30 +16,12 @@ import Hero from "../components/Hero.astro"
         <div class="line"></div> <!-- Line between header and categories -->
 
         <div class="categories-grid">
-            <div class="category">
-                <h3>KARRUSEL 2025</h3>
-                <a href="/lineup"><img src="/images/karrusel25.jpg" alt="Karrusel 2025" /></a>
-            </div>
-            <div class="category">
-                <h3>LATEST NEWS</h3>
-                <a href="/news"><img src="/images/latestnews.jpg" alt="Latest News" /></a>
-            </div>
-            <div class="category">
-                <h3>GALLERY</h3>
-                <a href="/"><img src="/images/Gallery.jpg" alt="Gallery" /></a>
-            </div>
-            <div class="category">
-                <h3>FAQ</h3>
-                <a href="/tickets"><img src="/images/FAQ.jpg" alt="FAQ" /></a>
-            </div>
-            <div class="category">
-                <h3>VOLUNTEER</h3>
-                <a href="/"><img src="/images/Volunteer.jpg" alt="Volunteer" /></a>
-            </div>
-            <div class="category">
-                <h3>ABOUT</h3>
-                <a href="/lineup"><img src="/images/about.jpg" alt="About" /></a>
-            </div>
+            <Card title="KARRUSEL 2025" imageSrc="/images/karrusel25.jpg" href="/lineup" alt="Karrusel 2025" />
+            <Card title="LATEST NEWS" imageSrc="/images/latestnews.jpg" href="/news" alt="Latest News" />
+            <Card title="GALLERY" imageSrc="/images/Gallery.jpg" href="/" alt="Gallery" />
+            <Card title="FAQ" imageSrc="/images/FAQ.jpg" href="/tickets" alt="FAQ" />
+            <Card title="VOLUNTEER" imageSrc="/images/Volunteer.jpg" href="/" alt="Volunteer" />
+            <Card title="ABOUT" imageSrc="/images/about.jpg" href="/lineup" alt="About" />
         </div>
 
         <div class="line"></div> <!-- Line after categories -->

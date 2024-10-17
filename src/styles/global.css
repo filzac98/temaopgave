@@ -62,9 +62,10 @@ p {
 }
 
 .main-header .logo h1 {
-  font-family: "Lexend Mega", sans-serif;
+  font-family: "Lexend Mega", serif;
   font-size: 24px;
   letter-spacing: 2px;
+  font-weight: 100;
 }
 
 .main-nav ul {
@@ -163,7 +164,7 @@ p {
   font-family: var(--font-family2);
   font-size: 28px;
   margin-bottom: 10px;
-  color: #ecd9b9; /* Text color */
+  color: var(--accent-color);
 }
 
 .line {
@@ -180,26 +181,28 @@ p {
   margin: 0 auto; /* Center the grid */
 }
 
-.category {
-  text-align: center; /* Center the text within each category */
-  overflow: hidden; /* Ensure that image doesn't overflow the box */
+.category-card {
+  display: block; /* Ensures the card acts as a block element */
+  text-align: center; /* Center the text within the card */
+  overflow: hidden; /* Prevent overflow */
   transition: transform 0.3s ease; /* Add transition for hover effect */
-}
-.category:hover {
-  transform: scale(1.05); /* Slightly scale up on hover */
+  text-decoration: none;
 }
 
-.category h3 {
+.category-card:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.category-card h3 {
   font-family: var(--font-family);
   margin-bottom: 10px;
-  color: #ecd9b9; /* Text color */
+  color: var(--accent-color);
 }
 
-/* Set a specific height for the images to ensure uniformity */
-.category img {
+.category-card img {
   width: 100%; /* Make images responsive */
   height: 200px; /* Set a fixed height */
-  object-fit: cover; /* Ensure images cover the box without distortion */
+  object-fit: cover; /* Ensure images cover the box */
   border-radius: 8px 8px 0 0; /* Round the top corners */
 }
 
