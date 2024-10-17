@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Lexend+Mega:wght@400;700&display=swap");
 
-/* Global Styles */
+/****** Global Styles *******/
 * {
   margin: 0;
   padding: 0;
@@ -46,7 +46,7 @@ p {
   margin: 0 0 1rem;
 }
 
-/* Header styling */
+/********** Header styling ****************/
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -91,11 +91,11 @@ p {
   color: #ecd9b9; /* Optional: Change text color */
 }
 
-/* Hero Section Styling */
+/********** Hero Section Styling ************/
 .hero {
   position: relative; /* Allow absolute positioning for child elements */
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: 90vh; /* Full viewport height */
   overflow: hidden; /* Prevent overflow */
 }
 
@@ -155,6 +155,7 @@ p {
   background-color: #c38156;
 }
 
+/******** Category Card and styles ***********/
 .categories-section {
   padding: 40px 20px; /* Adjust as needed */
   text-align: center; /* Center the content */
@@ -206,47 +207,90 @@ p {
   border-radius: 8px 8px 0 0; /* Round the top corners */
 }
 
-/* Artist Card Styles */
+/********* Artist Card Styles ************/
+/* Container holding the cards */
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* Add some spacing between the cards */
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%; /* Ensure container width fills the parent */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Artist Card link styles */
 .artist-link {
   text-decoration: none;
   color: inherit;
 }
 
+/* Artist Card styles */
 .artist-card {
   background-color: #333333; /* Dark background */
   border: 2px solid #ecd9b9; /* Light border */
   padding: 20px;
-  margin: 20px 0;
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Center align text */
+  height: 100%; /* Ensure cards have consistent height */
 }
 
+/* Ensures all images have the same fixed size */
+.artist-image {
+  width: 300px;
+  height: 250px; /* Set a fixed height */
+  border-radius: 8px; /* Optional: rounding the corners */
+  object-fit: cover; /* Cover the image without distorting it */
+}
+
+/* Hover effect on the artist card */
 .artist-card:hover {
   transform: translateY(-5px); /* Lifts the card slightly on hover */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds a shadow on hover */
 }
 
+/* Artist title styles */
 .artist-title {
   font-family: "Lexend Mega", sans-serif;
   font-size: 24px;
   color: #ecd9b9;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
+/* Artist type text */
 .artist-type {
   font-family: "Kantumruy Pro", sans-serif;
   font-size: 16px;
-  color: #c38156; /* Optional: Use a lighter color for the type */
+  color: #c38156; /* Lighter color for the type */
   margin-bottom: 8px;
 }
 
+/* Read more button text */
 .artist-content {
   font-family: "Kantumruy Pro", sans-serif;
   font-size: 14px;
-  color: #f2f2f2; /* Light text color for the content */
+  color: #f2f2f2; /* Light text color */
 }
 
-/* Newsletter Footer Styles */
+/* Media query for responsive design */
+@media (max-width: 900px) {
+  .artist-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .artist-grid {
+    grid-template-columns: 1fr; /* 1 column on extra small screens */
+  }
+}
+
+/************* Newsletter Footer Styles *****************/
 .newsletter-footer {
   background-color: #2a2a2a;
   color: var(--primary-color);
@@ -363,7 +407,7 @@ p {
 
   color: #333333;
 }
-/* Footer Bottom Section */
+/************* Footer Bottom Section ******************/
 .footer-bottom {
   display: flex;
   justify-content: space-between;

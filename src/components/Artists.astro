@@ -1,12 +1,15 @@
 ---
-const {data} = Astro.props
-
+const { data } = Astro.props
 ---
 
-<a href={`artists/${data.slug}`}>
+<div class="artist-grid">
+  <a href={`/artists/${data.slug}`} class="artist-link">
     <article class="artist-card">
-        <h2 class="artist-title">{data.title}</h2>
-        <p class="artist-type">{data.type}</p>
-        <p class="artist-content">{data.content}</p>
+      <img src={data.og_image.url} alt={data.title} class="artist-image" />
+      <h2 class="artist-title">{data.title}</h2>
+      <p class="artist-type">{data.type}</p>
+      <p class="artist-content">Read more</p>
     </article>
-</a>
+  </a>
+</div>
+

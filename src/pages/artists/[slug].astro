@@ -1,12 +1,15 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-
+import Hero from '../../components/Hero.astro';
 export async function getStaticPaths() {
     const data = await fetch('https://fetch-with-astro.netlify.app/api/artists', 
-    {
+        {
         method: "GET",
-
-    }).then(response => response.json());
+        headers: {
+            apikey:""
+            },
+        }
+    ).then((response) => response.json());
 
     return data.map((artist) => {
         return {
@@ -15,13 +18,22 @@ export async function getStaticPaths() {
         };
     });
 }
-const {myData} = Astro.props
+const { myData } = Astro.props
 console.log("Artist Data:", myData);
 ---
 
 
 
 <MainLayout title={myData.title}>
-    <h2>{myData.type}</h2>
+    <Hero imageSrc={myData.og_image.url} showContent={false} />
+    <h2>{myData.title}</h2>
     <p>{myData.content}</p>
 </MainLayout>
+
+<style>
+    h2, p {
+        text-align: center;
+        max-width: 1200px;
+        margin: 20px auto;
+    }
+</style>
