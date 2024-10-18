@@ -1,5 +1,6 @@
 ---
 const { data } = Astro.props
+import Button from "./Button.astro"
 ---
 
 <div class="artist-grid">
@@ -10,6 +11,7 @@ const { data } = Astro.props
       <p class="artist-type">{data.type}</p>
       <p class="artist-content">Read more</p>
     </article>
+    
   </a>
 </div>
 
