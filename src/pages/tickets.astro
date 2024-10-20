@@ -1,13 +1,38 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro"
-import Artists from "../components/Artists.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 import Hero from "../components/Hero.astro";
+import TicketCard from "../components/TicketCard.astro";
 
-const data = await fetch("https://fetch-with-astro.netlify.app/api/artists", {
-  method: "GET",
-}).then(res => res.json());
+
 ---
-
 <MainLayout title="Tickets" currentPage="/tickets">
   <Hero imageSrc="/images/hero2.jpg" showContent={false} />
+
+  <section class="ticket-options">
+    <TicketCard 
+      title="Day Ticket" 
+      description="Access to all performances and events for one day." 
+      price="400,00 DKK"
+    />
+    <TicketCard 
+      title="Weekend Ticket" 
+      description="Enjoy the whole weekend with access to all events." 
+      price="830,00 DKK"
+    />
+    <TicketCard 
+      title="VIP Ticket" 
+      description="Includes access to VIP areas, drinks, and exclusive events." 
+      price="1200,00 DKK"
+    />
+  </section>
 </MainLayout>
+
+<style>
+  .ticket-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+  }
+</style>

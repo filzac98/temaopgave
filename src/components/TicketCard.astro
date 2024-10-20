@@ -1,0 +1,44 @@
+---
+const { title, description, price } = Astro.props;
+---
+
+<div class="ticket-card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <span class="ticket-price">{price}</span>
+  <a href="https://www.ticketmaster.dk/event/553467?language=da-dk" class="buy-ticket-btn">Buy Now</a>
+</div>
+
+<style>
+  .ticket-card {
+    background-color: #333333;
+    border: 2px solid #ecd9b9;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 300px;
+    margin: 20px auto;
+  }
+
+  .ticket-price {
+    font-size: 24px;
+    color: #c38156;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .buy-ticket-btn {
+    background-color: #c38156;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .buy-ticket-btn:hover {
+    background-color: #a36845;
+  }
+</style>
