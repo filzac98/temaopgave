@@ -1,17 +1,16 @@
 ---
-const { data } = Astro.props
-import Button from "./Button.astro"
+const { data } = Astro.props;
 ---
 
 <div class="artist-grid">
   <a href={`/artists/${data.slug}`} class="artist-link">
     <article class="artist-card">
-      <img src={data.og_image.url} alt={data.title} class="artist-image" />
+      <img src={`/images/${data.image}`} alt={data.title} class="artist-image" />
       <h2 class="artist-title">{data.title}</h2>
       <p class="artist-type">{data.type}</p>
-      <p class="artist-content">Read more</p>
+      <!-- <p class="artist-content">{data.content}</p> -->
+      <!-- <p class="artist-socials">{data.socials}</p>
+      <p class="artist-spotify">{data.spotify_id}</p> -->
     </article>
-    
   </a>
 </div>
-

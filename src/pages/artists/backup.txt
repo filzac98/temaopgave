@@ -1,0 +1,169 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Button from '../../components/Button.astro';
+
+export async function getStaticPaths() {
+    const data = await fetch('https://fetch-with-astro.netlify.app/api/artists', 
+        {
+        method: "GET",
+        headers: {
+            apikey:""
+            },
+        }
+    ).then((response) => response.json());
+
+    return data.map((artist) => {
+        return {
+            params: { artist: artist.slug },
+            props: { artist },
+        };
+    });
+}
+
+const { artist } = Astro.props;
+
+// Spotify Embed URL with the stored spotify_id
+const spotifyEmbedUrl = `https://open.spotify.com/embed/artist/${artist.spotify_id}`;
+---
+
+<MainLayout title={artist.title}>
+    <a href="/lineup#artists" class="go-back-btn">Go Back to Artists</a>
+    <section class="artist-grid">
+        <div class="artist-image-wrapper">
+            <img src={artist.og_image.url} alt={artist.title} class="artist-image" />
+        </div>
+        <div class="artist-info">
+            <h2>{artist.title}</h2>
+            <p>{artist.content}</p>
+            <!-- <a href={myData.website} target="_blank" class="artist-website">{myData.website}</a> -->
+            <Button variant="primary" size="medium" buttonlink="/tickets">Buy Tickets</Button>
+        </div>
+    </section>
+
+    <!-- Add any additional content like Spotify embeds here -->
+    <!-- <section class="artist-extras">
+        <div class="spotify-embed"> -->
+            <!-- Spotify or other media embeds here -->
+        <!-- </div>
+    </section>  --> 
+
+    <!-- <section class="artist-info">
+        <h2>{artist.title}</h2>
+        <p>{artist.content}</p>
+    
+        
+        <iframe 
+          style="border-radius:12px" 
+          src={spotifyEmbedUrl} 
+          width="100%" 
+          height="352" 
+          frameborder="0" 
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+          loading="lazy">
+        </iframe>
+      </section> -->
+</MainLayout>
+
+<style>
+    /* Button style for "Go Back to Artists" */
+.go-back-btn {
+    position: absolute;
+    top: 70px;
+    left: 175px;
+    padding: 10px 15px;
+    background-color: #c38156;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: "Lexend Mega", sans-serif;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.go-back-btn:hover {
+    background-color: #a36845;
+}
+/* Main layout grid */
+
+.artist-image{
+   all: unset; /* Resets all inherited styles */
+}
+.artist-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    align-items: start;
+}
+
+/* Image section styling */
+.artist-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artist-image {
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Text content styling */
+.artist-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    font-family: "Lexend Mega", sans-serif;
+    font-size: 36px;
+    color: #ecd9b9;
+    margin-bottom: 10px;
+}
+
+p {
+    font-family: "Kantumruy Pro", sans-serif;
+    font-size: 18px;
+    color: #c9c9c9;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* Website link */
+.artist-website {
+    color: #f2f2f2;
+    font-size: 16px;
+    text-decoration: none;
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+.buy-tickets {
+    background-color: #c38156;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.buy-tickets:hover {
+    background-color: #a36845;
+}
+
+/* Additional media section styling */
+.artist-extras {
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.spotify-embed {
+    width: 100%;
+    height: 400px;
+}
+</style>

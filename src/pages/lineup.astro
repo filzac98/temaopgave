@@ -2,22 +2,32 @@
 import MainLayout from "../layouts/MainLayout.astro"
 import Artists from "../components/Artists.astro";
 import Hero from "../components/Hero.astro";
-import Button from "../components/Button.astro";
 
-const data = await fetch("https://fetch-with-astro.netlify.app/api/artists", {
+const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1d25uenRqZ3J4Y2N6anFlZmp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk1MDY5MzcsImV4cCI6MjA0NTA4MjkzN30.FNkYAbMhfIXSdJ3x9LyoOyjn_O43S4bi5tZaNPxySvM";
+
+const data = await fetch("https://auwnnztjgrxcczjqefjt.supabase.co/rest/v1/karruselartists?select=*", {
   method: "GET",
+  headers: {
+    "apikey": apiKey,
+    "Authorization": `Bearer ${apiKey}`,
+    "Content-Type": "application/json"
+  }
 }).then(res => res.json());
+
+console.log(data);
 ---
 
 <MainLayout title="Lineup" currentPage="/lineup">
-  <Hero imageSrc="/images/hero2.webp" showContent={false} />
-  <!-- Add the artist-grid class here -->
-  <section class="artist-grid">
-    {
-      data.map((artist) => {
-        return <Artists data={artist} />;
-      })
-    }
-  </section>
-</MainLayout>
-
+    <Hero imageSrc="/images/hero2.webp" showContent={false} />
+    <section class="artist-grid" id="artists">
+      {
+        data.length > 0 ? (
+          data.map((artist) => {
+            return <Artists data={artist} />;
+          })
+        ) : (
+          <p>No artists found.</p> // Display a message if no artists are found
+        )
+      }
+    </section>
+  </MainLayout>

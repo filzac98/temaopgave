@@ -3,48 +3,64 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Button from '../../components/Button.astro';
 
 export async function getStaticPaths() {
-    const data = await fetch('https://fetch-with-astro.netlify.app/api/artists', 
+    const data = await fetch('https://auwnnztjgrxcczjqefjt.supabase.co/rest/v1/karruselartists?select=*', 
         {
         method: "GET",
         headers: {
-            apikey:""
+            apikey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1d25uenRqZ3J4Y2N6anFlZmp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk1MDY5MzcsImV4cCI6MjA0NTA4MjkzN30.FNkYAbMhfIXSdJ3x9LyoOyjn_O43S4bi5tZaNPxySvM"
             },
         }
     ).then((response) => response.json());
 
     return data.map((artist) => {
         return {
-            params: { slug: artist.slug },
-            props: { myData: artist },
+            params: { artist: artist.slug },
+            props: { artist },
         };
     });
 }
 
-const { myData } = Astro.props;
+const { artist } = Astro.props;
+
+// Spotify Embed URL with the stored spotify_id
+const spotifyEmbedUrl = `https://open.spotify.com/embed/artist/${artist.spotify_id}`;
 ---
 
-<MainLayout title={myData.title}>
+<MainLayout title={artist.title}>
+    <a href="/lineup#artists" class="go-back-btn">Go Back to Artists</a>
     <section class="artist-grid">
         <div class="artist-image-wrapper">
-            <img src={myData.og_image.url} alt={myData.title} class="artist-image" />
+            <img src={`/images/${artist.image}`} alt={artist.title} class="artist-image" />
         </div>
         <div class="artist-info">
-            <h2>{myData.title}</h2>
-            <p>{myData.content}</p>
+            <h2>{artist.title}</h2>
+            <p>{artist.content}</p>
             <!-- <a href={myData.website} target="_blank" class="artist-website">{myData.website}</a> -->
             <Button variant="primary" size="medium" buttonlink="/tickets">Buy Tickets</Button>
         </div>
     </section>
 
-    <!-- Add any additional content like Spotify embeds here -->
-    <!-- <section class="artist-extras">
-        <div class="spotify-embed"> -->
-            <!-- Spotify or other media embeds here -->
-        <!-- </div>
-    </section>  --> 
 </MainLayout>
 
 <style>
+    /* Button style for "Go Back to Artists" */
+.go-back-btn {
+    position: absolute;
+    top: 70px;
+    left: 175px;
+    padding: 10px 15px;
+    background-color: #c38156;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: "Lexend Mega", sans-serif;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.go-back-btn:hover {
+    background-color: #a36845;
+}
 /* Main layout grid */
 
 .artist-image{
