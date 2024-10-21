@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 const { artist } = Astro.props;
 
 // Spotify Embed URL with the stored spotify_id
-const spotifyEmbedUrl = `https://open.spotify.com/embed/artist/${artist.spotify_id}`;
+const spotifyEmbedUrl = `https://open.spotify.com/embed/artist/${artist.spotify_id}?utm_source=generator&theme=0`;
 ---
 
 <MainLayout title={artist.title}>
@@ -35,7 +35,15 @@ const spotifyEmbedUrl = `https://open.spotify.com/embed/artist/${artist.spotify_
         <div class="artist-info">
             <h2>{artist.title}</h2>
             <p>{artist.content}</p>
-            <!-- <a href={myData.website} target="_blank" class="artist-website">{myData.website}</a> -->
+            <iframe class="spotify-embed"
+                style="border-radius:12px" 
+                src={spotifyEmbedUrl} 
+                width="100%" 
+                height="352" 
+                frameborder="0" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
             <Button variant="primary" size="medium" buttonlink="/tickets">Buy Tickets</Button>
         </div>
     </section>
@@ -143,5 +151,8 @@ p {
 .spotify-embed {
     width: 100%;
     height: 400px;
+    margin-bottom: 5%;
 }
 </style>
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/38loz68LLQSxadt4CJZq0O?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
