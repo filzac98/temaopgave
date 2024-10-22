@@ -27,15 +27,18 @@ const spotifyEmbedUrl = `https://open.spotify.com/embed/artist/${artist.spotify_
 ---
 
 <MainLayout title={artist.title}>
-    <a href="/lineup#artists" class="go-back-btn">Go Back to Artists</a>
     <section class="artist-grid">
         <div class="artist-image-wrapper">
             <img src={`/images/${artist.image}`} alt={artist.title} class="artist-image" />
+            <a href="/lineup#artists" class="go-back-btn">Go Back to Artists</a>
         </div>
         <div class="artist-info">
             <h2>{artist.title}</h2>
             <p>{artist.content}</p>
-            <iframe class="spotify-embed"
+            <Button variant="primary" size="medium" buttonlink="/tickets">Buy Tickets</Button>
+        </div>
+    </section>
+    <iframe class="spotify-embed"
                 style="border-radius:12px" 
                 src={spotifyEmbedUrl} 
                 width="100%" 
@@ -44,9 +47,7 @@ const spotifyEmbedUrl = `https://open.spotify.com/embed/artist/${artist.spotify_
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
                 loading="lazy">
             </iframe>
-            <Button variant="primary" size="medium" buttonlink="/tickets">Buy Tickets</Button>
-        </div>
-    </section>
+    
 
 </MainLayout>
 
@@ -54,9 +55,8 @@ const spotifyEmbedUrl = `https://open.spotify.com/embed/artist/${artist.spotify_
     /* Button style for "Go Back to Artists" */
 .go-back-btn {
     position: absolute;
-    top: 70px;
-    left: 175px;
-    padding: 10px 15px;
+    top: 11%;
+    padding: 7px 12px;
     background-color: #c38156;
     color: white;
     border-radius: 5px;
@@ -149,9 +149,22 @@ p {
 }
 
 .spotify-embed {
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     height: 400px;
-    margin-bottom: 5%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    align-items: start;
 }
+
+@media (max-width: 768px) {
+    .artist-grid {
+    display: grid;
+    grid-template-columns: 1fr
+    }   
+}
+
 </style>
 

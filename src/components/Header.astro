@@ -8,6 +8,10 @@ const { currentPage } = Astro.props;
             <h1>KARRUSEL</h1>
           </a>
     </div>
+    <div class="burger-menu">
+        <span>&#9776;</span> <!-- Burger icon -->
+      </div>
+    
     <nav class="main-nav">
       <ul>
         <li><a href="/lineup" class={currentPage === "/lineup" ? "current-page" : ""}>LINE UP 2025</a></li>
@@ -18,3 +22,5 @@ const { currentPage } = Astro.props;
       </ul>
     </nav>
   </header>
+
+  <script src="../js/burger.js"></script>
